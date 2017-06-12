@@ -4,7 +4,7 @@ import os
 
 lines = []
 
-f = open("$HOME/.bash_history")
+f = open(os.environ["HOME"] + "/.bash_history", "r")
 line = f.readline()
 while line:
     lines.append(line.strip())
@@ -15,7 +15,7 @@ f.close()
 # remove duplicated command
 lines = sorted(set(lines), key=lines.index)
 
-f = open(os.environ["HOME"] + "/a.txt", "w")
+f = open(os.environ["HOME"] + "/.bash_history", "w")
 for l in lines:
     f.writelines(l + "\n")
 
